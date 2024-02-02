@@ -134,28 +134,28 @@ passport.deserializeUser(function(user, cb) {
 
 
 // This is your test secret API key.
-const stripe = require("stripe")(process.env.STRIPE_SERVER_KEY);
+// const stripe = require("stripe")(process.env.STRIPE_SERVER_KEY);
 
 
 
 
-server.post("/create-payment-intent", async (req, res) => {
-  const { totalAmount } = req.body;
+// server.post("/create-payment-intent", async (req, res) => {
+//   const { totalAmount } = req.body;
 
-  // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: totalAmount*100,
-    currency: "inr",
-    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    automatic_payment_methods: {
-      enabled: true,
-    },
-  });
+//   // Create a PaymentIntent with the order amount and currency
+//   const paymentIntent = await stripe.paymentIntents.create({
+//     amount: totalAmount*100,
+//     currency: "inr",
+//     // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+//     automatic_payment_methods: {
+//       enabled: true,
+//     },
+//   });
 
-  res.send({
-    clientSecret: paymentIntent.client_secret,
-  });
-});
+//   res.send({
+//     clientSecret: paymentIntent.client_secret,
+//   });
+// });
 
 
 
